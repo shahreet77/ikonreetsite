@@ -3,50 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creativity in Early Childhood</title>
+    <title>Creativity in Early Childhood Curriculum</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        nav a { margin: 10px; display: inline-block; text-decoration: none; color: blue; }
-        .editable { border: 1px dashed gray; padding: 10px; display: inline-block; min-width: 300px; }
-        button { margin: 10px; padding: 5px 10px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5dc;
+            color: #333;
+        }
+        .navbar {
+            background-color: #003366;
+            overflow: hidden;
+            padding: 15px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+            background-color: #00509e;
+            border-radius: 5px;
+        }
+        .navbar a:hover {
+            background-color: #0077cc;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .editable {
+            border: 1px dashed #999;
+            padding: 10px;
+            min-height: 50px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
     </style>
-</head>
-<body>
-
-    <h1>Creativity in Early Childhood Curriculum</h1>
-    <p class="editable" contenteditable="true">This is an introduction to how creativity can be fostered in early childhood education.</p>
-
-    <nav>
-        <h3>Curriculum Areas:</h3>
-        <a href="art.html">Art</a>
-        <a href="drama.html">Drama and Puppetry</a>
-        <a href="movement_music.html">Movement and Music</a>
-        <a href="language_literacy.html">Language and Literacy</a>
-        <a href="science.html">Science</a>
-        <a href="engineering.html">Engineering</a>
-        <a href="technologies.html">Technologies</a>
-        <a href="math_numeracy.html">Mathematics and Numeracy</a>
-        <a href="humanities.html">Humanities and Social Sciences</a>
-        <a href="integrated_curriculum.html">Integrated Curriculum</a>
-    </nav>
-
-    <br>
-    <button onclick="saveContent()">Save Changes</button>
-
     <script>
-        function saveContent() {
-            const content = document.querySelector(".editable").innerHTML;
-            localStorage.setItem("homeContent", content);
-            alert("Changes saved!");
+        function showPage(pageId) {
+            var pages = document.getElementsByClassName('content');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function loadContent() {
+            document.querySelectorAll('.editable').forEach(function (element) {
+                let savedContent = localStorage.getItem(element.id);
+                if (savedContent) {
+                    element.innerHTML = savedContent;
+                }
+                element.addEventListener('input', function () {
+                    localStorage.setItem(element.id, element.innerHTML);
+                });
+            });
         }
 
         window.onload = function() {
-            const savedContent = localStorage.getItem("homeContent");
-            if (savedContent) {
-                document.querySelector(".editable").innerHTML = savedContent;
-            }
-        }
+            showPage('home');
+            loadContent();
+        };
     </script>
+</head>
+<body>
+    <div class="navbar">
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('art')">Art</a>
+        <a onclick="showPage('drama')">Drama & Puppetry</a>
+        <a onclick="showPage('movement')">Movement & Music</a>
+        <a onclick="showPage('language')">Language & Literacy</a>
+        <a onclick="showPage('science')">Science</a>
+        <a onclick="showPage('engineering')">Engineering</a>
+        <a onclick="showPage('technologies')">Technologies</a>
+        <a onclick="showPage('math')">Mathematics & Numeracy</a>
+        <a onclick="showPage('humanities')">Humanities & Social Sciences</a>
+        <a onclick="showPage('integrated')">Integrated Curriculum</a>
+        <a onclick="showPage('references')">References</a>
+    </div>
 
+    <div class="container">
+        <div class="content" id="home">
+            <h1>Creativity in Early Childhood Curriculum</h1>
+            <div id="home-content" class="editable" contenteditable="true">Welcome to this resource on facilitating creativity within the early childhood curriculum...</div>
+        </div>
+
+        <div class="content" id="art">
+            <h2>Art</h2>
+            <div id="art-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="drama">
+            <h2>Drama and Puppetry</h2>
+            <div id="drama-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="movement">
+            <h2>Movement and Music</h2>
+            <div id="movement-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="language">
+            <h2>Language and Literacy</h2>
+            <div id="language-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="science">
+            <h2>Science</h2>
+            <div id="science-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="engineering">
+            <h2>Engineering</h2>
+            <div id="engineering-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="technologies">
+            <h2>Technologies</h2>
+            <div id="technologies-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="math">
+            <h2>Mathematics and Numeracy</h2>
+            <div id="math-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="humanities">
+            <h2>Humanities and Social Sciences</h2>
+            <div id="humanities-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="integrated">
+            <h2>Integrated Curriculum (STEM, STEAM, STREAM & STEMIE)</h2>
+            <div id="integrated-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+
+        <div class="content" id="references">
+            <h2>References</h2>
+            <div id="references-content" class="editable" contenteditable="true">Edit content here...</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Early Childhood Creativity | 2025</p>
+    </div>
 </body>
 </html>
