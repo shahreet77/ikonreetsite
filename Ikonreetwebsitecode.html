@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creativity in Early Childhood</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        nav a { margin: 10px; display: inline-block; text-decoration: none; color: blue; }
+        .editable { border: 1px dashed gray; padding: 10px; display: inline-block; min-width: 300px; }
+        button { margin: 10px; padding: 5px 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Creativity in Early Childhood Curriculum</h1>
+    <p class="editable" contenteditable="true">This is an introduction to how creativity can be fostered in early childhood education.</p>
+
+    <nav>
+        <h3>Curriculum Areas:</h3>
+        <a href="art.html">Art</a>
+        <a href="drama.html">Drama and Puppetry</a>
+        <a href="movement_music.html">Movement and Music</a>
+        <a href="language_literacy.html">Language and Literacy</a>
+        <a href="science.html">Science</a>
+        <a href="engineering.html">Engineering</a>
+        <a href="technologies.html">Technologies</a>
+        <a href="math_numeracy.html">Mathematics and Numeracy</a>
+        <a href="humanities.html">Humanities and Social Sciences</a>
+        <a href="integrated_curriculum.html">Integrated Curriculum</a>
+    </nav>
+
+    <br>
+    <button onclick="saveContent()">Save Changes</button>
+
+    <script>
+        function saveContent() {
+            const content = document.querySelector(".editable").innerHTML;
+            localStorage.setItem("homeContent", content);
+            alert("Changes saved!");
+        }
+
+        window.onload = function() {
+            const savedContent = localStorage.getItem("homeContent");
+            if (savedContent) {
+                document.querySelector(".editable").innerHTML = savedContent;
+            }
+        }
+    </script>
+
+</body>
+</html>
